@@ -4,10 +4,10 @@
 
 FROM php:7.4.3-fpm-alpine3.10
 
-#RUN  echo "http://mirrors.ustc.edu.cn/alpine/v3.10/main/" > /etc/apk/repositories
+RUN  echo "http://mirrors.ustc.edu.cn/alpine/v3.10/main/" > /etc/apk/repositories
 
 RUN apk update &&apk add nginx supervisor \
-        && apk add gd zlib-dev libpng-dev oniguruma oniguruma-dev   \
+        && apk add gd zlib-dev libpng-dev oniguruma oniguruma-dev nano   \
 		&& mkdir /run/nginx  /var/log/supervisor 
 
 COPY  service.conf /etc/supervisor.d/

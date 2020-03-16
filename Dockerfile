@@ -1,12 +1,10 @@
 #
-# NOTE: THIS DOCKERFILE IS GENERATED VIA "update.sh"
-#
-# PLEASE DO NOT EDIT IT DIRECTLY.
+# PHP7.4.3 + NGINX + Supervisor + Composer
 #
 
 FROM php:7.4.3-fpm-alpine3.10
 
-RUN  echo "http://mirrors.ustc.edu.cn/alpine/v3.10/main/" > /etc/apk/repositories
+#RUN  echo "http://mirrors.ustc.edu.cn/alpine/v3.10/main/" > /etc/apk/repositories
 
 RUN apk update &&apk add nginx supervisor \
         && apk add gd zlib-dev libpng-dev oniguruma oniguruma-dev   \

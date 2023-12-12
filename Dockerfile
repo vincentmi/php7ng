@@ -10,15 +10,15 @@ RUN apk update &&apk add nginx supervisor \
         && apk add gd zlib-dev libpng-dev  libjpeg-turbo-dev freetype-dev  oniguruma oniguruma-dev nano   \
 		&& mkdir /run/nginx  /var/log/supervisor 
 
-COPY  service.conf /etc/supervisor.d/
-COPY  default.conf /etc/nginx/conf.d/
-COPY  supervisord.conf /etc/
-COPY  composer /usr/bin/
-
 RUN  docker-php-ext-configure gd --with-jpeg --with-freetype  \
     && docker-php-ext-install gd pdo_mysql mbstring  bcmath  iconv json \
     && docker-php-ext-enable gd  pdo_mysql mbstring bcmath  iconv  json
 
+COPY  service.conf /etc/supervisor.d/
+COPY  default.conf /etc/nginx/conf.d/
+COPY  supervisord.conf /etc/
+COPY  composer /usr/bin/
+COPY  php.ini /usr/local/etc/php/
 
 EXPOSE 80
 VOLUME /var/www/html /var/log 
